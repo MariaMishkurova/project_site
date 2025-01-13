@@ -9,9 +9,18 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 from .models import Note, Users, Tasks
+import git
 
+def webhook(request):
+    if request.method == 'POST':
+        repo = git.Repo('MariaMishkurova/project_site')
+        origin = repo.remotes.origin
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
 
-#главная страница
+    #главная страница
 def main(request):
     # Получение часового пояса из GET-запроса
     user_timezone = request.GET.get('timezone', 'UTC')  # По умолчанию 'UTC'

@@ -20,4 +20,6 @@ path('authorize/', views.google_calendar_init, name='google_calendar_init'),
     path('calendar/', views.calendar_view, name='calendar_view'),
     path('add_task', views.add_task, name='add_task'),
 path('tasks/', views.return_task, name='tasks'),
+path('update_server/', views.webhook, name='update_server'),
+
 ]
