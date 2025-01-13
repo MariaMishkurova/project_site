@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-1f2&t4$u3+y_b99k38t%#df!^c-4au32z8cak9_&!2p=a5r4is
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['http://mariamishkurova.pythonanywhere.com']
 
 
 # Application definition
@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'myproject1',
         'USER': 'mariamiskurova',
         'PASSWORD': '12345',
-        'HOST': 'localhost',
+        'HOST': 'http://mariamishkurova.pythonanywhere.com',
         'PORT': '5432',
 
 
@@ -132,8 +132,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
+STATIC_ROOT = '/home/mariamishkurova/project_site/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
