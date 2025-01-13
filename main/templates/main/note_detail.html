@@ -1,0 +1,19 @@
+{% extends 'main/general.html'%}
+{%load static%}
+{% block title %}Start{% endblock %}
+
+{% block body %}
+
+
+
+<form method="post" action="{%url 'save'%}">
+    {% csrf_token %}
+    <input type="hidden" name="note_id" value ="{{note_id}}">
+    <textarea class="add_note" name="note_text">{{note.text}}</textarea>
+
+    <button class="save">Сохранить</button>
+</form>
+<a href="{% url 'main' %}"><img class="home" src="{% static 'main/images/home.png' %}" alt="Главная" width="40" height="40"></a>
+
+
+{% endblock %}

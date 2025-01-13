@@ -1,0 +1,12 @@
+{% extends 'main/general.html' %}
+{%load static%}
+
+{% block title %}{{ note.text|truncatechars:30 }}{% endblock %}
+
+{% block body %}
+<div class="note-detail">
+    <h2>Полный текст заметки</h2>
+    <p>{{ note.text }}</p>
+    <a href="{% url 'main' %}" class="back-button">Вернуться к списку заметок</a>
+</div>
+{% endblock %}

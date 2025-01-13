@@ -1,0 +1,43 @@
+{% extends 'main/general.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="center-container"> <!-- Обертка для центрирования -->
+    <aside class="asideReg">
+        <h3 class="create">Создать учётную запись</h3>
+        <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            <div class="main">
+                <div class="field">
+                    <label class="label">Логин
+                        <input class="inputregister" type="text" name="login">
+                    </label>
+                </div>
+                <div class="field">
+                    <label class="label">Пароль
+                        <input class="inputregister" type="password" name="password1">
+                    </label>
+                </div>
+                <div class="field">
+                    <label class="label">Повторите пароль
+                        <input class="inputregister" type="password" name="password2">
+                    </label>
+                </div>
+            </div>
+            <div class="buttonRegDiv"><button class="buttonRegister">Зарегистрироваться</button></div>
+            {% if message %}
+                <div class="{{ message_class }}">{{ message }}</div>
+            {% endif %}
+            <script type="text/javascript">
+                {% if message == "error" %}
+                    window.location.href = "{% url 'register_site' %}"
+                {% endif %}
+            </script>
+        </form>
+        <div class="alreadydiv">
+            <a href="{% url 'login' %}"><p class="already">У меня уже есть аккаунт</p></a>
+        </div>
+    </aside>
+</div>
+{% endblock %}

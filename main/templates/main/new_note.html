@@ -1,0 +1,28 @@
+{% extends 'main/general.html'%}
+{%load static%}
+{% block title %}Start{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container">
+<form method="post" action="{%url 'save'%}">
+    {% csrf_token %}
+    <input type="hidden" name="note_id" value ="{{note_id}}">
+    <textarea class="add_note" name="note_text"></textarea>
+     <script>
+        window.addEventListener('load', function() {
+            const inputField = document.querySelector('.add_note');
+            if (inputField) {
+                inputField.focus();  // Устанавливаем фокус на поле ввода
+                inputField.setSelectionRange(0, 0);  // Курсор перемещается в начало поля
+            }
+        });
+    </script>
+    <button class="save">Сохранить</button>
+</form>
+</div>
+<a href="{% url 'main' %}"><img class="home" src="{% static 'main/images/home.png' %}" alt="Главная" width="40" height="40"></a>
+
+{% endblock %}

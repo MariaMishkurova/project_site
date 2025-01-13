@@ -1,0 +1,40 @@
+{% extends 'main/general.html' %}
+{% load static %}
+{% block title %}Start{% endblock %}
+
+{% block body %}
+
+{% if current_login != "Undefined" %}
+    <div class="profile-container">
+        <img class="userbutton2" src="{% static 'main/images/userAnon.png' %}" alt="Пользователь" width="28" height="28">
+        <p class="current">{{ current_login }}</p>
+    </div>
+{% endif %}
+
+{% if current_login == "Undefined" %}
+<div class="center-container-notes">
+    <a href="{% url 'main' %}">
+        <img class="home" src="{% static 'main/images/home.png' %}" alt="Главная" width="40" height="40">
+    </a>
+    <p class="unlogin">Войдите или зарегистрируйтесь, чтобы просмотреть свои заметки</p>
+</div>
+{% else %}
+    <div class="empty"></div>
+    <div class="allnotes">
+        {% if not shortnotes %}
+        <p class="no-notes">У вас пока нет заметок</p>  <!-- Сообщение, если нет заметок -->
+        {% else %}
+            {% for note in shortnotes %}
+            <p class="notes">
+                <!-- Ссылка на страницу с полной заметкой -->
+                <a class="und" href="{% url 'go_note' note.id %}">{{ note.text }}</a>
+                <a href="{% url 'delete' note.id %}"><img class="delete_note" src="{% static 'main/images/delete.png' %}" alt="Удалить" width="30" height="30"></a>
+            </p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <a href="{% url 'new_note' %}"><img class="newnote" src="{% static 'main/images/new_note.png' %}" alt="Новая заметка" width="50" height="50"></a>
+{% endif %}
+<a href="{% url 'main' %}"><img class="home" src="{% static 'main/images/home.png' %}" alt="Главная" width="50" height="50"></a>
+
+{% endblock %}

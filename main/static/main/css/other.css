@@ -1,0 +1,104 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #EDEDED, #FAFAFA);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Высота 100% окна браузера */
+    color: #111;
+}
+
+.asideReg {
+    background: #E8EBEB;
+    width: 100%;
+    max-width: 800px;
+    padding: 3%;
+    line-height: 1.5;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    min-width: 500px;
+}
+
+
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.label {
+    font-size: 18px;
+    color: #333;
+}
+
+.inputregister,
+.inputlogin {
+    background: #F2F5F5;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.create {
+    margin-top: 5px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 25px;
+    color: #333;
+}
+
+.buttonRegister {
+    margin-top: 30px;
+    border-radius: 10px;
+    color: white;
+    transition: .2s linear;
+    background: #1F1F1F;
+    padding: 7px 20px;
+    font-size: 20px;
+}
+
+.buttonRegister:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #718AF0;
+}
+
+.buttonRegDiv {
+    text-align: center;
+}
+
+.already {
+    text-align: center;
+    font-size: 18px;
+    color: #1F1F1F;
+    text-decoration: underline;
+}
+
+.already:hover {
+    color: #718AF0;
+}
+
+.err {
+    color: #FA3353;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.succ {
+    margin-top: 10px;
+    color: #36CF6D;
+    text-align: center;
+}

@@ -1,0 +1,151 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#calendar-container {
+    position: relative;
+    width: 90%;  /* Увеличиваем ширину контейнера */
+    max-width: 1200px;  /* Устанавливаем максимальную ширину */
+    height: calc(80vh + 40px);  /* Увеличиваем высоту контейнера с учетом отступа снизу */
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px 50px;  /* Уменьшаем отступы по бокам */
+    padding-top: 0; /* Убираем верхний отступ */
+    box-shadow: 0 0 25px #BDBDBD;
+    padding: 25px;
+}
+
+/* Кнопка "Вернуться" */
+#return-btn {
+    position: absolute;
+    top: 35px;
+    left: 30px;
+    background-color: white;
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 60px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1rem;
+}
+
+#return-btn img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Навигационные кнопки */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#prev-btn {
+    left: -13px;
+}
+
+#next-btn {
+    right: -13px;
+}
+
+/* Стили для текущего месяца */
+.fc-daygrid-day {
+    height: 100px;
+    width: 14%; /* Уменьшаем ширину ячеек до 14% для правильного распределения */
+}
+
+.fc-toolbar-title {
+    font-size: 1.5rem;
+    margin: 0; /* Убираем внешние отступы */
+    padding: 15px 30px; /* Внутренние отступы оставляем */
+    background: black;
+    color: white;
+    border-radius: 5px;
+    position: relative; /* Убедимся, что позиционирование корректное */
+    top: 0; /* Устанавливаем, что элемент касается верхней границы */
+}
+
+.fc-toolbar {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Центрируем заголовок */
+    align-items: center; /* Центрируем кнопки навигации */
+}
+
+
+/* Выравниваем кнопки навигации по высоте */
+.fc-toolbar.fc-header-toolbar .fc-button {
+    height: 40px; /* Задаем одинаковую высоту */
+    line-height: 38px; /* Выравниваем текст по центру */
+    display: flex; /* Используем flex для центровки текста */
+    align-items: center; /* Вертикальное выравнивание */
+    justify-content: center; /* Горизонтальное выравнивание */
+    padding: 0 15px; /* Добавляем отступы по бокам */
+    font-size: 1rem; /* Увеличиваем шрифт для удобства */
+    border-radius: 5px; /* Закругляем края */
+    background-color: white; /* Цвет фона */
+    border: 1px solid black; /* Цвет границы */
+    color: black;
+}
+
+/* Стили для активной кнопки */
+.fc-toolbar.fc-header-toolbar .fc-button-active {
+    background-color: black;
+    color: white;
+}
+
+
+/* Стили для сегодняшнего дня */
+.fc-day-today {
+    background-color: #f4f4f4 !important;
+    border: none !important;
+    border-radius: 5px;
+}
+
+/* Стили для событий */
+.fc-event {
+    background-color: #8e44ad;
+    color: white;
+    font-weight: bold;
+}
+
+.fc-event:hover {
+    background-color: #9b59b6;
+}
+
+/* Стили для дат другого месяца */
+.fc-daygrid-day.fc-day-other {
+    color: #ABABAB !important; /* Серый цвет для дат другого месяца */
+    background-color: transparent !important; /* Убираем фон для других дат */
+}
+
+/* Стили для даты текущего месяца */
+.fc-daygrid-day.fc-day-today {
+    border-radius: 5px;
+}
+
+/* Убираем номера недель */
+.fc-daygrid-week-number {
+    display: none;
+}

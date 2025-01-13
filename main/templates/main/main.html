@@ -1,0 +1,136 @@
+{% extends 'main/general.html' %}
+{% load static %}
+{% block title %}Главная{% endblock %}
+
+{% block body %}
+
+<script>
+    // Проверяем, есть ли параметр timezone в URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (!urlParams.has('timezone')) {
+        // Определение часового пояса пользователя
+        const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+        // Добавляем параметр timezone в URL и перенаправляем
+        const url = new URL(window.location.href);
+        url.searchParams.set('timezone', userTimeZone);
+        window.location.href = url;
+    }
+  function openPopup() {
+    var popup = document.querySelector('.popup');
+    popup.style.display = 'block';
+}
+    function closePopup() {
+    var popup = document.querySelector('.popup');
+    popup.style.display = 'none';
+}
+</script>
+
+
+
+    {% if current_login == "Undefined" %}
+        {% if current_time == "Утро" %}
+            <p class="hello">Доброе утро!</p>
+        {% elif current_time == "День" %}
+            <p class="hello">Добрый день!</p>
+        {% else %}
+            <p class="hello">Добрый вечер!</p>
+        {% endif %}
+    {% endif %}
+
+    {% if current_login != "Undefined" %}
+        {% if current_time == "Утро" %}
+            <p class="hello">Доброе утро, {{ current_login }}!</p>
+        {% elif current_time == "День" %}
+            <p class="hello">Добрый день, {{ current_login }}!</p>
+        {% else %}
+            <p class="hello">Добрый вечер, {{ current_login }}!</p>
+        {% endif %}
+    {% endif %}
+
+
+<div class="tasks-today">
+    <h3>Задачи на сегодня</h3>
+
+    <button class="add_task" onclick="openPopup()">Добавить</button>
+
+    <div class="checkbox-container">
+     {% if tasks %}
+            {% for task in tasks %}
+            <div class="checkbox-item">
+                <label>
+                    <input type="checkbox"/>
+                    {{ task.text }}
+                </label>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>Нет задач на сегодня.</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="popup" style="display: none;">
+    {%if current_login != "Undefined"%}
+    <h3>Добавить задачу</h3>
+    <form action="{% url 'add_task' %}" method="post">
+        {% csrf_token %}
+        <input type="text" id="taskName" name="taskName" class="inputTask"/>
+        <button type="submit" class ="closePopup">Сохранить</button>
+    </form>
+    {%else%}
+    <p>Войдите, чтобы добавлять задачи</p>
+    <button onclick="closePopup()" class="closePopup">Вернуться</button>
+    {%endif%}
+</div>
+
+    <div class="main-container">
+        <!-- Календарь -->
+        <div class="icon-container">
+            <a href="{% url 'google_calendar_init' %}">
+                <img class="icon" src="{% static 'main/images/calendar.png' %}" alt="Календарь">
+            </a>
+            <a class="caption" href="{% url 'google_calendar_init' %}">Календарь</a>
+        </div>
+
+        <!-- Заметки -->
+        <div class="icon-container">
+            <a href="{% url 'notes' %}">
+                <img class="icon" src="{% static 'main/images/notes.png' %}" alt="Заметки">
+            </a>
+            <a class="caption" href="{% url 'notes' %}">Заметки</a>
+        </div>
+
+        <!-- Настройки -->
+        <div class="icon-container">
+            <a href="{% url 'settings' %}">
+                <img class="icon" src="{% static 'main/images/settings.png' %}" alt="Настройки">
+            </a>
+            <a class="caption" href="{% url 'settings' %}">Настройки</a>
+        </div>
+
+        <div class="icon-container {% if current_login != 'Undefined' %}logged-in{% endif %}">
+            <a href="{% url 'register_site' %}">
+                <img class="icon" src="{% static 'main/images/user.png' %}" alt="Войти">
+            </a>
+            <a class="caption" href="{% url 'register_site' %}">Войти</a>
+        </div>
+
+    </div>
+
+
+
+    <div class="auth-container">
+        {% if current_login != "Undefined" %}
+            <!-- Если пользователь авторизован -->
+            <div class="user-info">
+                <img class="user-icon" src="{% static 'main/images/userAnon.png' %}" alt="Пользователь">
+                <p class="current_user">{{ current_login }}</p>
+                <form action="{% url 'logout' %}">
+                    <button class="logout">Выйти</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

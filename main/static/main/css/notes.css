@@ -1,0 +1,168 @@
+/* Контейнер для профиля пользователя */
+.profile-container {
+    position: fixed;
+    right: 10px; /* Располагаем профиль справа */
+    top: 10px;   /* Располагаем профиль сверху */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.profile-container .current {
+    margin-left: 10px; /* Отступ между изображением пользователя и текстом */
+    font-size: 16px;
+    color: black;
+}
+
+/* Если нет заметок */
+.no-notes {
+    font-size: 18px;
+    color: #888;
+    text-align: center;
+    margin-top: 100px;  /* Добавляем отступ сверху */
+    font-weight: bold;
+}
+
+/* Стили для иконки "Home" */
+.home {
+    position: fixed;
+    left: 10px; /* Расположим иконку слева */
+    top: 10px; /* Расположим иконку сверху */
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.home:hover {
+    transform: scale(1.1);
+}
+
+.home:active {
+    transform: scale(0.9);
+}
+
+/* Стили для контейнера с заметками */
+.allnotes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 10px;
+}
+
+/* Стили для заметок */
+.notes {
+    width: 60%;
+    margin: 15px 0;
+    padding: 15px;
+    border: 0.5px solid #BDBDBD;
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    word-wrap: break-word;
+}
+
+/* Ссылка для текста заметки */
+.und {
+    text-decoration: none;
+    color: black;
+    flex-grow: 1;
+}
+
+/* Кнопка удаления заметки */
+.delete_note {
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.delete_note:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.newnote {
+    position: fixed;
+    left: 10px;
+    top: 60px;
+    border: none;
+    transition: 0.3s;
+}
+
+.new_note_text {
+    position: fixed;
+    left: 45%;
+    top: 3.6%;
+    font-size: 19px;
+    color: black;
+}
+
+.new_note_text:hover {
+    text-decoration: underline;
+}
+
+.center-container-notes {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.unlogin {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #888;
+}
+
+.save {
+    position: fixed; /* Фиксированное расположение */
+    bottom: 20px; /* Отступ от нижнего края экрана */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Центрируем кнопки по горизонтали */
+    padding: 10px 30px; /* Внутренние отступы */
+    border-radius: 5px; /* Скругленные углы */
+    color: white; /* Цвет текста */
+    background-color: #1F1F1F; /* Темный фон */
+    font-size: 16px; /* Размер шрифта */
+    border: none; /* Убираем рамку */
+    cursor: pointer; /* Указатель для интерактивного элемента */
+    transition: background-color 0.3s ease; /* Плавная анимация при наведении */
+}
+
+
+/* Стили для кнопки "Сохранить" при наведении */
+.save:hover {
+    background-color: #333; /* Цвет фона меняется при наведении */
+}
+
+.save:disabled {
+    background-color: #BDBDBD;
+    cursor: not-allowed;
+}
+
+.empty {
+    margin-top: 70px;
+}
+
+.add_note {
+    width: 100vh;
+    height: 100vh;
+    max-width: calc(100% - 20px); /* Ограничиваем ширину для мобильных устройств */
+    margin: 20px auto; /* Центрируем по горизонтали и добавляем отступы сверху и снизу */
+    padding: 20px; /* Внутренние отступы */
+    border: 1px solid #BDBDBD; /* Легкая рамка */
+    border-radius: 5px; /* Скругленные углы */
+    resize: none; /* Убираем возможность изменения размера */
+    box-sizing: border-box; /* Учитываем отступы в размерах */
+    overflow-y: auto; /* Добавляем вертикальную прокрутку при необходимости */
+    background-color: #fff; /* Белый фон */
+    font-size: 16px; /* Удобный размер шрифта */
+    line-height: 1.5; /* Межстрочный интервал */
+}
+.add_note:focus {
+    outline: none; /* Убираем стандартную обводку при фокусировке */
+    border-color: #1F1F1F; /* Цвет рамки при фокусировке */
+}

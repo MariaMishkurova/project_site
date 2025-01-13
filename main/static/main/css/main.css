@@ -1,0 +1,449 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #EDEDED, #FAFAFA);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center;    /* Центрирование по вертикали */
+    min-height: 100%; /* Минимальная высота равна высоте страницы */
+    color: #111;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+}
+
+/* Заголовок */
+.hello {
+    font-size: 40px;
+    font-weight: 600 !important;
+    color: #111;
+    margin-top: 7vh;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+
+/* Контейнер для иконок и задач на сегодня */
+.main-container {
+    width:65%; /* Сужаем контейнер */
+    max-width: 1200px; /* Ограничение ширины */
+    display: flex;
+    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+    justify-content: space-around; /* Распределяем элементы по строкам */
+    padding: 40px;
+    margin: 0 auto; /* Центрируем контейнер */
+    text-align: center;
+    gap: 20px; /* Добавляем пространство между иконками */
+    position: relative; /* Для смещения относительно родителя */
+    top: -90px;}
+
+.tasks-today {
+    background: #FFFFFF;
+    width: 80%; /* Широкий блок */
+    padding: 30px; /* Увеличенные отступы */
+    margin: 0 auto 60px auto; /* Центрируем блок и добавляем отступ снизу */
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column; /* Задачи и заголовок расположены вертикально */
+    gap: 20px; /* Отступ между заголовком и задачами */
+    align-items: flex-start; /* Выравниваем содержимое по левому краю */
+    max-width: 800px; /* Ограничиваем максимальную ширину */
+    margin-top: -20px;
+}
+
+
+.tasks-today h3 {
+    font-size: 22px; /* Увеличиваем размер шрифта заголовка */
+    font-weight: bold;
+    color: #333;
+    margin: 0; /* Убираем внешние отступы */
+    text-align: left;
+    width: 100%; /* Заголовок занимает всю ширину */
+    padding-bottom: 10px; /* Отступ снизу */
+}
+
+.task-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.task-description {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Контейнер для иконок */
+.icon-container {
+    width: 40%; /* Делаем иконки равномерными */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    background: #FAFAFA;
+    transition: background 0.3s ease;
+    height: 150px; /* Устанавливаем фиксированную высоту */
+    box-sizing: border-box; /* Чтобы padding не выходил за пределы */
+}
+.checkbox-container {
+    border-top: 1px solid #DDD; /* Линия под заголовком */
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column; /* Располагаем задачи вертикально */
+    gap: 15px; /* Отступ между задачами */
+    align-items: flex-start; /* Выравниваем задачи по левому краю */
+    width: 100%; /* Занимаем всю ширину родителя */
+}
+/* Эффект при наведении */
+.icon-container:hover {
+    background: #F0F0F0; /* Плавная смена фона при наведении */
+}
+
+.icon-container.logged-in {
+    background: #E0E0E0; /* Серый фон */
+}
+
+.icon-container.logged-in a {
+    pointer-events: none; /* Отключаем клики */
+    cursor: default; /* Убираем "руку" */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+.icon-container.logged-in .icon:hover {
+    filter: grayscale(100%); /* Никаких изменений при наведении */
+    transform: none; /* Убираем увеличение */
+}
+
+.icon {
+    width: 60px;  /* Уменьшаем размер иконок */
+    height: 60px;
+    filter: grayscale(80%);
+    transition: all 0.3s ease, transform 0.3s ease;
+}
+
+.icon:hover {
+    filter: grayscale(0%);
+    transform: scale(1.2) rotate(-2deg);
+}
+
+.caption {
+    font-size: 18px;
+    color: #111;
+    margin-top: 10px;
+    font-weight: 550;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.caption:hover {
+    color: #333;
+}
+.checkbox-item {
+    display: flex;
+    align-items: center; /* Выравниваем содержимое по вертикали */
+    gap: 10px; /* Расстояние между чекбоксом и текстом */
+}
+/* Стили для чекбоксов */
+/* Стили для чекбоксов */
+input[type="checkbox"] {
+    appearance: none; /* Убираем стандартный стиль */
+    width: 20px; /* Размер чекбокса */
+    height: 20px;
+    background-color: #fff; /* Белый фон */
+    border: 2px solid black; /* Черная обводка */
+    cursor: pointer; /* Курсор при наведении */
+    position: relative; /* Для абсолютного позиционирования галочки */
+    transition: all 0.3s ease; /* Плавный переход для всех изменений */
+}
+
+/* Стили при отметке чекбокса */
+input[type="checkbox"]:checked {
+    background-color: #111; /* Черный фон при отметке */
+    border-color: #111; /* Черная граница при отметке */
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✔'; /* Галочка */
+    color: white; /* Белый цвет галочки */
+    font-size: 16px; /* Размер галочки */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрирование галочки */
+}
+
+
+.label_checkbox {
+    cursor: pointer; /* Указываем, что лейбл кликабельный */
+}
+
+/* Контейнер авторизации */
+.auth-container {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+}
+
+/* Кнопки */
+.logout {
+    background: linear-gradient(135deg, #000, #444);
+    color: #FFF;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.logout:hover {
+    background: linear-gradient(135deg, #444, #000);
+}
+
+.login_button {
+    background: #000;
+    color: #FFF;
+    border-radius: 10px;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.login_button:hover {
+    background: #222;
+    transform: translateY(-2px);
+}
+
+.asideReg {
+    background: #E8EBEB;
+    width: 50%;
+    padding: 3%;
+    line-height: 1.5;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование содержимого по горизонтали */
+    justify-content: center; /* Центрирование содержимого по вертикали */
+    text-align: center; /* Выравнивание текста */
+    height: auto;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.label {
+    font-size: 18px;
+    color: #333;
+}
+
+.inputregister {
+    background: #F2F5F5;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.create {
+    margin-top: 5px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 25px;
+    color: #333;
+}
+
+.buttonRegister {
+    margin-top: 30px;
+    border-radius: 10px;
+    color: white;
+    transition: .2s linear;
+    background: #1F1F1F;
+    padding: 7px 20px;
+    font-size:20px;
+}
+
+.buttonRegister:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #718AF0;
+}
+
+.buttonRegDiv{
+    text-align: center;
+}
+
+.already{
+    text-align: center;
+    font-size: 18px;
+    color: #1F1F1F;
+    text-decoration: underline;
+}
+.already:hover{
+    color: #718AF0;
+}
+
+.alreadydiv{
+    padding-top: 15px;
+}
+
+/*aside вход*/
+.inputlogin{
+    background: #F2F5F5;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login_all {
+    float:left;
+}
+
+.err {
+    color: #FA3353;
+    text-align: center;
+    margin-top: 10px;
+}
+.succ {
+    margin-top: 10px;
+    color: #36CF6D;
+    text-align: center;
+}
+
+
+.center-container {
+    position: absolute; /* Абсолютное позиционирование */
+    top: 50%; /* Смещение вниз на 50% */
+    left: 50%; /* Смещение вправо на 50% */
+    transform: translate(-50%, -50%); /* Центрирование по горизонтали и вертикали */
+    text-align: center; /* Выравнивание содержимого по центру */
+}
+
+.home-icon {
+    display: block; /* Блоковый элемент, чтобы оказаться над текстом */
+    margin: 0 auto 10px auto; /* Центрирование и отступ снизу */
+    width: 50px; /* Размер иконки */
+    height: 50px;
+}
+
+.unlogin {
+    font-size: 18px; /* Размер текста */
+    color: #111; /* Цвет текста */
+    padding: 20px; /* Отступы вокруг текста */
+    background: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон */
+    border-radius: 10px; /* Скругление углов */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.center-container {
+    display: flex; /* Используем flexbox */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    height: 100vh; /* Высота родителя 100% экрана */
+    padding: 0; /* Убираем отступы */
+}
+
+.asideReg {
+    background: #E8EBEB;
+    width: 100%; /* Сделать блок гибким */
+    max-width: 800px; /* Максимальная ширина, чтобы не растягивался слишком сильно */
+    padding: 3%;
+    line-height: 1.5;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    min-width: 500px; 
+}
+
+.center-container-notes{
+position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.add_task{
+background: linear-gradient(135deg, #000, #444);
+    color: #FFF;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+.add_task:hover {
+    background: linear-gradient(135deg, #444, #000);
+}
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid #000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    opacity: 1;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.inputTask {
+    padding: 8px;
+    font-size: 16px;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+.closePopup {
+    background: linear-gradient(135deg, #000, #444);
+    color: #FFF;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+}
+}
