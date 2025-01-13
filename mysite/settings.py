@@ -81,16 +81,15 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myproject1',
-        'USER': 'mariamiskurova',
-        'PASSWORD': '12345',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-
-
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mariamishkurova$myproject1',
+        'USER': 'mariamishkurova',
+        'PASSWORD': 'Uvu3pepper_',
+        'HOST': 'mariamishkurova.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
+
 
 
 MY_GLOBAL_VARIABLE = "Undefined"
