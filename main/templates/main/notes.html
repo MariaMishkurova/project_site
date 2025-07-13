@@ -9,16 +9,6 @@
         <img class="userbutton2" src="{% static 'main/images/userAnon.png' %}" alt="Пользователь" width="28" height="28">
         <p class="current">{{ current_login }}</p>
     </div>
-{% endif %}
-
-{% if current_login == "Undefined" %}
-<div class="center-container-notes">
-    <a href="{% url 'main' %}">
-        <img class="home" src="{% static 'main/images/home.png' %}" alt="Главная" width="40" height="40">
-    </a>
-    <p class="unlogin">Войдите или зарегистрируйтесь, чтобы просмотреть свои заметки</p>
-</div>
-{% else %}
     <div class="empty"></div>
     <div class="allnotes">
         {% if not shortnotes %}
@@ -34,7 +24,35 @@
         {% endif %}
     </div>
     <a href="{% url 'new_note' %}"><img class="newnote" src="{% static 'main/images/new_note.png' %}" alt="Новая заметка" width="50" height="50"></a>
-{% endif %}
-<a href="{% url 'main' %}"><img class="home" src="{% static 'main/images/home.png' %}" alt="Главная" width="50" height="50"></a>
 
+<div class="sidebar">
+    <div class="menu-item">
+        <a href="{% url 'main' %}"><img src="{% static 'main/images/home.png' %}" alt="Главная"></a>
+    </div>
+    <div class="menu-item">
+        <a href="{% url 'google_calendar_init' %}"><img src="{% static 'main/images/calendar.png' %}" alt="Календарь"></a>
+    </div>
+    <div class="menu-item">
+        <a href="{% url 'notes' %}"><img src="{% static 'main/images/notes.png' %}" alt="Заметки"></a>
+    </div>
+    <div class="bottom_sidebar">
+        <div class="bottom_sidebar">
+        {% if current_login != "Undefined" %}
+        <div class="menu-item">
+            <a href="{% url 'logout' %}"> <img src="{% static 'main/images/logout.png' %}" alt="Выйти"></a>
+        </div>
+        {%else%}
+         <div class="menu-item">
+            <a href="{% url 'login' %}"> <img src="{% static 'main/images/login.png' %}" alt="Войти"></a>
+        </div>
+        {%endif%}
+    </div>
+</div>
+{% endif %}
+{% if current_login == "Undefined" %}
+<script>
+    alert("Войдите или зарегистрируйтесь, чтобы просмотреть свои заметки");
+    window.location.replace("/");
+</script>
+{%endif%}
 {% endblock %}

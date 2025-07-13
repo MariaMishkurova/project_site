@@ -9,7 +9,18 @@ body {
     align-items: center;
     height: 100vh;
 }
-
+.home_calendar{
+    position: absolute;
+    top: 4vh;
+    left: 0.5vh;
+    padding: 10px 20px;
+    border: solid 1.5px black;
+    border-radius: 10px;
+}
+.home_calendar img{
+    width: 30px;
+    height: auto;
+}
 #calendar-container {
     position: relative;
     width: 90%;  /* Увеличиваем ширину контейнера */

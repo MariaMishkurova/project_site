@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-1f2&t4$u3+y_b99k38t%#df!^c-4au32z8cak9_&!2p=a5r4is
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mariamishkurova.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mariamishkurova$myproject1',
-        'USER': 'mariamishkurova',
-        'PASSWORD': 'Uvu3pepper_',
-        'HOST': 'mariamishkurova.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'myproject1',
+        'USER': 'mariamiskurova',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -132,7 +132,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/mariamishkurova/project_site/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
